@@ -20,13 +20,22 @@ body {
     height: 550px;
 }
 
+
 .geniusCentro{
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
     border-radius: 100%;
     width: 200px;
     height: 200px;
     z-index: 1;
+}
+
+.centro{
+    width: 180px;
+    height: 180px;
 }
 
 .genius {
