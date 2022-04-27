@@ -1,6 +1,10 @@
+
+
+ 
 let order = [];
 let clickedOrder = [];
 let score = 0;
+let modal = false;
 
 //0 - verde
 //1 - vermelho
@@ -11,6 +15,7 @@ const blue = document.querySelector('.blue');
 const red = document.querySelector('.red');
 const green = document.querySelector('.green');
 const yellow = document.querySelector('.yellow');
+
 
 //cria ordem aletoria de cores
 let shuffleOrder = () => {
@@ -26,13 +31,16 @@ let shuffleOrder = () => {
 
 //acende a proxima cor
 let lightColor = (element, number) => {
-    number = number * 500;
+    console.log(number)
+    number = number * 800;
+
     setTimeout(() => {
         element.classList.add('selected');
-    }, number - 250);
+    }, number - 400);
+
     setTimeout(() => {
         element.classList.remove('selected');
-    });
+    }, number);
 }
 
 //checa se os botoes clicados são os mesmos da ordem gerada no jogo
@@ -44,8 +52,10 @@ let checkOrder = () => {
         }
     }
     if(clickedOrder.length == order.length) {
-        alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nível!`);
-        nextLevel();
+       setTimeout(()=>{
+            $("#fundoGame").append("<div id='proxNivel'></div>");
+            $("#proxNivel").html("<h1> Próximo Nivel </h1><p id='textoInicializar'>Sua pontuação foi: " + score + "</p>" + "<button id='botao' onClick= nextLevel();>Continuar</h3></button>");
+       },1000);
     }
 }
 
@@ -75,13 +85,18 @@ let createColorElement = (color) => {
 
 //funcao para proximo nivel do jogo
 let nextLevel = () => {
+    $("#proxNivel").remove();
     score++;
-    shuffleOrder();
+    setTimeout(()=>{shuffleOrder();},1000);
 }
 
 //funcao para game over
 let gameOver = () => {
-    alert(`Pontuação: ${score}!\nVocê perdeu o jogo!\nClique em OK para iniciar um novo jogo`);
+
+    setTimeout(()=>{
+        $("#fundoGame").append("<div id='proxNivel'></div>");
+        $("#proxNivel").html("<h1> GAME OVER </h1><p id='textoInicializar'>Sua pontuação foi: " + score + "</p>" + "<button id='botao' onClick= playGame();>Continuar</h3></button>");
+   },1000);
     order = [];
     clickedOrder = [];
 
@@ -90,10 +105,11 @@ let gameOver = () => {
 
 //funcao de inicio do jogo
 let playGame = () => {
-    alert('Bem vindo ao Gênesis! Iniciando novo jogo!');
+  $("#proxNivel").remove();
+  $("#inicio").hide();
     score = 0;
-
-    nextLevel();
+    setTimeout(()=>{nextLevel();},2000);
+    
 }
 
 //eventos de clique para as cores
@@ -102,6 +118,3 @@ red.onclick = () => click(1);
 yellow.onclick = () => click(2);
 blue.onclick = () => click(3);
 
-
-//inicio do jogo
-playGame();
