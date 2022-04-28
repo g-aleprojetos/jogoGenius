@@ -17,10 +17,10 @@ body {
 
 #inicio, #proxNivel ,#gameOver{
     position: absolute;
-	width:auto;
+ 	width:700px;
 	height:auto;
-	background-color:#FFF;
-    margin: 100px 300px auto 300px;
+    border-radius: 10px;
+	background: linear-gradient(48deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 30%, rgba(3,1,43,1) 60%, rgba(0,212,255,1) 100%);background-color:#ffffff;
 	text-align:center;
 	padding:20px;
     box-shadow: 0px 10px 80px 3px black;
@@ -28,12 +28,14 @@ body {
 }
 
 .tituloModal{
-    font-size: 60px;
+    font-size: 40px;
+    color: #ffffff;
 }
 
 .textoModal{
-    font-size: 30px;
+    font-size: 20px;
     margin-top: 50px;
+    color: #ffffff;
 }
 
 .botaoModal{
@@ -41,9 +43,10 @@ body {
     height: 80px;
     border-radius: 20px;
     margin: 10px;
-    font-size: x-large;
+    font-size: 20px;
     margin-top: 50px;
     margin-bottom: 30px;
+    background-color:#dddada;
     box-shadow: 0px 10px 10px 3px black;
     cursor: pointer;
 }

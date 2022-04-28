@@ -14,6 +14,12 @@ const red = document.querySelector('.red');
 const green = document.querySelector('.green');
 const yellow = document.querySelector('.yellow');
 
+var blueSom = document.getElementById("somBlue");
+var yellowSom = document.getElementById("somYellow");
+var redSom = document.getElementById("somRed");
+var greenSom = document.getElementById("somGreen");
+var somGameover = document.getElementById("somGameover");
+
 
 //cria ordem aletoria de cores
 let shuffleOrder = () => {
@@ -24,22 +30,24 @@ let shuffleOrder = () => {
 
         for (let i in order) {
             let elementColor = createColorElement(order[i]);
-            lightColor(elementColor, Number(i) + 1);
+            lightColor(elementColor, Number(i), order[i]);
         }
     }
 }
 
 //acende a proxima cor
-let lightColor = (element, number) => {
-    number = number * 800;
+let lightColor = (element, number, numberColor) => {
+    
+    let numberTime = (number + 1) * 800;
 
     setTimeout(() => {
         element.classList.add('selected');
-    }, number - 400);
+        sons(numberColor);
+    }, numberTime - 400);
 
     setTimeout(() => {
         element.classList.remove('selected');
-    }, number);
+    }, numberTime);
 }
 
 //checa se os botoes clicados são os mesmos da ordem gerada no jogo
@@ -55,7 +63,6 @@ let checkOrder = () => {
     }
 
     if (clickedOrder.length == order.length) {
-        console.log(proximo)
         if (proximo) {
             setTimeout(() => {
                 $("#fundoGame").append("<div id='proxNivel'></div>");
@@ -67,6 +74,7 @@ let checkOrder = () => {
 
 //funcao para o clique do usuario
 let click = (color) => {
+    sons(color);
     clickedOrder[clickedOrder.length] = color;
     createColorElement(color).classList.add('selected');
 
@@ -99,6 +107,7 @@ let nextLevel = () => {
 //funcao para game over
 let gameOver = () => {
     setTimeout(() => {
+        somGameover.play();
         $("#fundoGame").append("<div id='gameOver'></div>");
         $("#gameOver").html("<h1 class='tituloModal'> GAME OVER </h1><p class='textoModal'>Sua pontuação foi: " + score + "</p>" + "<button class='botaoModal' onClick= playGame();>Reiniciar</h3></button>");
     }, 1000);
@@ -109,6 +118,7 @@ let gameOver = () => {
 
 //funcao de inicio do jogo
 let playGame = () => {
+    somGameover.pause();
     $("#gameOver").remove();
     $("#inicio").hide();
     proximo = true;
@@ -123,3 +133,15 @@ red.onclick = () => click(1);
 yellow.onclick = () => click(2);
 blue.onclick = () => click(3);
 
+//evento de sons
+let sons = (color) =>{
+    if (color == 0) {
+        greenSom.play();
+    } else if (color == 1) {
+        redSom.play();
+    } else if (color == 2) {
+        yellowSom.play();
+    } else if (color == 3) {
+        blueSom.play();
+    }
+}
