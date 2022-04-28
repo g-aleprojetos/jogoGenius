@@ -17,24 +17,23 @@ body {
 
 #inicio, #proxNivel ,#gameOver{
     position: absolute;
-	width:500px;
+	width:auto;
 	height:auto;
 	background-color:#FFF;
- 	margin-left:auto;
-    margin-right:auto;
- 	margin-top:100px;
+    margin: 100px 300px auto 300px;
 	text-align:center;
-	padding:10px;
+	padding:20px;
     box-shadow: 0px 10px 80px 3px black;
     z-index: 2;
 }
 
 .tituloModal{
-    font-size: xx-large;
+    font-size: 60px;
 }
 
 .textoModal{
-    font-size: x-large;
+    font-size: 30px;
+    margin-top: 50px;
 }
 
 .botaoModal{
@@ -42,6 +41,11 @@ body {
     height: 80px;
     border-radius: 20px;
     margin: 10px;
+    font-size: x-large;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    box-shadow: 0px 10px 10px 3px black;
+    cursor: pointer;
 }
 
 .geniusBlack{
