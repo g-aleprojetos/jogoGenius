@@ -16,4 +16,6 @@ Em 1987, a Prosoft desenvolveu um Genius para MSX 1 O programa foi desenvolvido 
 O Genius original possuía três jogos diferentes e quatro níveis de dificuldade.
 Voltou a ser fabricado pela Estrela em 2012. </p>
 
+<p>Para jogar é só <a href="https://g-aleprojetos.github.io/jogoGenius/">clicar aqui.</a></p>
+
 <a href="https://pt.wikipedia.org/wiki/Genius_(jogo)">font: wikipedia</a>
